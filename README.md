@@ -3,19 +3,19 @@
 
 ## 코드 실행하기
 ### 방법 1
-1. 리눅스 환경에 접속하여 `cd dmeta` 커맨드를 입력하여 'dmeta' 경로로 이동합니다.
-2. 이미지 cropping을 하기 위해 `python cut_image.py ${자를 이미지명} ${M} ${N} {sub image명}` 명령어를 터미널에 입력하면 잘린 이미지 조각(sub image)들이 'meta/cut/' 경로에 형성됩니다
+1. 리눅스 환경에 접속하여 `cd dmeta_task` 커맨드를 입력하여 'dmeta_task' 경로로 이동합니다.
+2. 이미지 cropping을 하기 위해 `python cut_image.py ${자를 이미지명.이미지 파일 타입} ${M} ${N} {sub image명}` 명령어를 터미널에 입력하면 잘린 이미지 조각(sub image)들이 'dmeta_task/cut/' 경로에 형성됩니다
    - 예를들어, 'bike.png'라는 이미지를 2x2 크기로 자르고 싶고, 각 잘라진 sub image의 이름을 'crop'으로 하고 싶을 경우, 다음과 같이 입력하면 됩니다.
    
    `python cut_image.py bike.png 2 2 crop`
    
-3. 이 잘린 이미지들을 합병하기 위해 `python merge_image.py ${sub image명} ${M} ${N} ${merged image명}` 명령어를 터미널에 입력하면 'dmeta/merge/' 경로에 원본 이미지와 유사한 합병된 이미지가 저장됩니다.
+3. 이 잘린 이미지들을 합병하기 위해 `python merge_image.py ${sub image명} ${M} ${N} ${merged image명}` 명령어를 터미널에 입력하면 'dmeta_task/merge/' 경로에 원본 이미지와 유사한 합병된 이미지가 저장됩니다.
    - 예를들어 sub image들의 이름을 'crop'으로 이름붙였고, 병합된 이미지 파일명을 'result'로 하고 싶으면 아래와 같이 입력하면 됩니다. 단, M, N값은 이미지를 자를 때 입력한 값과 동일해야 합니다.
    
    `python merge_image.py crop 2 2 result`
 
 ### 방법 2
-1. 리눅스 환경에 접속하여 `cd dmeta` 커맨드를 입력하여 'dmeta' 경로로 이동합니다.
+1. 리눅스 환경에 접속하여 `cd dmeta_task` 커맨드를 입력하여 'dmeta_task' 경로로 이동합니다.
 2. 커맨드 창에 `chmod +x cutNmerge.sh`를 입력합니다.
 3. 커맨드 창에 `./cutNmerge.sh`를 입력하여 "cut_image.py"와 "merge_image.py"를 동시에 실행할 수 있습니다.
   
