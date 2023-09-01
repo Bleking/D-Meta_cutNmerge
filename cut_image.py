@@ -23,7 +23,6 @@ width_piece = width // N
 # 잘린 이미지 무작위 순서대로 이름 붙이기
 random_filenames = random.sample(range(1, (M * N) + 1), (M * N))
 
-# 이미지 크기가 나눠 떨어지지 않으면 자를 수 없는 조건 추가하기
 for m in range(M):
     for n in range(N):
         top = m * height_piece
@@ -34,11 +33,11 @@ for m in range(M):
         crop = img_orig[top:bottom, left:right]
 
         if random.random() < 0.5:
-            crop = cv2.flip(crop, 1)  # 좌우 반전
+            crop = cv2.flip(crop, 1)  # 0.5 확률로 좌우 반전
         if random.random() < 0.5:
-            crop = cv2.flip(crop, 0)  # 상하 반전
+            crop = cv2.flip(crop, 0)  # 0.5 확률로 상하 반전
         if random.random() < 0.5:
-            crop = cv2.rotate(crop, cv2.ROTATE_90_COUNTERCLOCKWISE)  # 반시계 방향 90도 회전
+            crop = cv2.rotate(crop, cv2.ROTATE_90_COUNTERCLOCKWISE)  # 0.5 확률로 반시계 방향 90도 회전
         
         random_filename = random_filenames.pop()
-        cv2.imwrite('./cut/' + output_name + f'_{random_filename}.png', crop)  # cv2.imwrite('./cut/' + output_name + f'_{m}{n}.png', crop)
+        cv2.imwrite('./cut/' + output_name + f'_{random_filename}.png', crop)
