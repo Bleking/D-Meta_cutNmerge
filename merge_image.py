@@ -13,7 +13,7 @@ output_name = sys.argv[4]
 
 with open('./cut/img2cut.txt', 'r') as f:
     image_name = f.read().strip()
-img_orig = cv2.imread('./image/' + image_name, cv2.IMREAD_COLOR)  # cut_image에서 사용된 이미지가 불러와지도록 바꿔야 함
+img_orig = cv2.imread('./image/' + image_name, cv2.IMREAD_COLOR)
 
 # SIFT
 sift = cv2.SIFT_create()
@@ -24,7 +24,7 @@ for m in range(M):
     row_images_list = []
     for n in range(N):
         piece_filename = f'./cut/{input_prefix}_{m*N + n + 1}.png'
-        # print(piece_filename)
+        
         if os.path.exists(piece_filename):
             img_piece = cv2.imread(piece_filename, cv2.IMREAD_COLOR)
             keypoints_piece, descriptors_piece = sift.detectAndCompute(img_piece, None)
@@ -60,4 +60,5 @@ for m in range(M):
 merged_img = np.zeros_like(merged_images_list[0])
 for row in merged_images_list:
     merged_img += row
+
 cv2.imwrite('./merge/' + output_name + '.jpg', merged_img)
